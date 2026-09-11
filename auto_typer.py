@@ -21,9 +21,11 @@ COLORS = {
     "accent_dim":   "#1f6feb",
     "text":         "#e6edf3",
     "text_dim":     "#8b949e",
-    "green":        "#3fb950",
+    "green":        "#238636",
+    "green_hover":  "#2ea043",
     "yellow":       "#d29922",
-    "red":          "#f85149",
+    "red":          "#da3633",
+    "red_hover":    "#f85149",
     "cyan":         "#39d353",
 }
 
@@ -200,22 +202,22 @@ class AutoTyperApp:
         btn_frame.pack(fill="x", padx=24, pady=(16, 0))
 
         self.start_btn = ctk.CTkButton(
-            btn_frame, text="▶  Start Typing", height=44,
-            font=ctk.CTkFont(family="Segoe UI", size=15, weight="bold"),
-            fg_color=COLORS["accent_dim"], hover_color=COLORS["accent"],
+            btn_frame, text="▶  START TYPING", height=54,
+            font=ctk.CTkFont(family="Segoe UI", size=16, weight="bold"),
+            fg_color=COLORS["green"], hover_color=COLORS["green_hover"],
             text_color="#ffffff", corner_radius=10,
             command=self._on_start
         )
-        self.start_btn.pack(side="left", expand=True, fill="x", padx=(0, 6))
+        self.start_btn.pack(side="left", expand=True, fill="x", padx=(0, 8))
 
         self.stop_btn = ctk.CTkButton(
-            btn_frame, text="■  Stop", height=44,
-            font=ctk.CTkFont(family="Segoe UI", size=15, weight="bold"),
-            fg_color=COLORS["border"], hover_color=COLORS["red"],
+            btn_frame, text="■  STOP", height=54,
+            font=ctk.CTkFont(family="Segoe UI", size=16, weight="bold"),
+            fg_color=COLORS["border"], hover_color=COLORS["red_hover"],
             text_color=COLORS["text_dim"], corner_radius=10,
             state="disabled", command=self._on_stop
         )
-        self.stop_btn.pack(side="right", expand=True, fill="x", padx=(6, 0))
+        self.stop_btn.pack(side="right", expand=True, fill="x", padx=(8, 0))
 
         # ── Footer / Status ──
         footer = ctk.CTkFrame(self.app, fg_color="transparent")
@@ -287,7 +289,7 @@ class AutoTyperApp:
     def _reset_ui(self, status_text, status_color):
         """Reset UI to idle state (must be called from main thread)."""
         self.is_typing = False
-        self.start_btn.configure(state="normal", fg_color=COLORS["accent_dim"])
+        self.start_btn.configure(state="normal", fg_color=COLORS["green"])
         self.stop_btn.configure(state="disabled", fg_color=COLORS["border"], text_color=COLORS["text_dim"])
         self.text_area.configure(state="normal")
         self.status.set(status_text, status_color)
