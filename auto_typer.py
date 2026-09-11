@@ -160,7 +160,7 @@ class AutoTyperApp:
         self.speed_value_label.pack(side="right")
 
         self.speed_slider = ctk.CTkSlider(
-            speed_frame, from_=5, to=200, number_of_steps=39,
+            speed_frame, from_=5, to=2000, number_of_steps=399,
             fg_color=COLORS["border"], progress_color=COLORS["accent_dim"],
             button_color=COLORS["accent"], button_hover_color=COLORS["accent_hover"],
             command=self._on_speed_change
